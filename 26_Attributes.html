@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Assigning Class
+        function createForm() {
+            document.getElementById("box1").setAttribute("class", "container1");
+        }
+        
+        //Change Background Color
+        function changeBackgroundColor() {
+            document.getElementById("box1").style.backgroundColor = document.getElementById("changeBackgroundColor").value;
+        }
+
+        //Create Heading
+        function formName() {
+            const formName = document.createElement("h2");
+            formName.setAttribute("id", "formNmae");
+            formName.innerHTML = document.getElementById("formName").value;
+            document.getElementById("box1").appendChild(formName);
+        }
+
+        //Create Input and add ID
+        let createInput = {
+            count: 1,
+
+            create() {
+                const inp = document.createElement("input");
+                inp.setAttribute("id", this.count);
+                const inpName = document.createElement("p");
+                inpName.innerHTML = document.getElementById("createInput").value;
+                document.getElementById("box1").appendChild(inpName);
+                document.getElementById("box1").appendChild(inp);
+                this.count++;
+            }
+        }
+        
+        //Create Button
+        function submitButton() {
+            let btn = document.createElement("button");
+            // btn.style.backgroundColor=blue;
+            btn.innerHTML = document.getElementById("submitButton").value;
+            document.getElementById("box1").appendChild(btn);
+        }
+
+    </script>
+    <style>
+        body {
+            background-color: antiquewhite;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .container1 {
+            border: solid red 5px;
+            background-color: aquamarine;
+            height: 600px;
+            width: 60%;
+            margin: 20px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .container2 {
+            border: solid red 5px;
+            background-color: cadetblue;
+            height: 600px;
+            width: 30%;
+            margin-left: 15px;
+            padding: 20px;
+            position: absolute;
+            left: 1300px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>HTLML Attributes
+        <h1>Create form</h1>
+    </header>
+    <section>
+        <div class="container">
+            <div id="box1"></div>
+            <div class="container2">
+                <button onclick="createForm()">Create A form</button><br>
+                <input type="text" id="changeBackgroundColor">
+                <button onclick="changeBackgroundColor()">Change Form Background Color</button><br>
+                <input type="text" id="formName">
+                <button onclick="formName()">Name of form</button><br>
+                <input type="text" id="createInput">
+                <button onclick="createInput.create()">Create Input</button><br>
+                <input type="text" id="submitButton">
+                <button onclick="submitButton()">Name submit button</button><br>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>

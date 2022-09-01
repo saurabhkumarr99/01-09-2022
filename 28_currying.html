@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let calculateVolume1 = {
+
+            dimensions() {
+                this.length = document.getElementById("l1").value,
+                    this.breadth = document.getElementById("b1").value,
+                    this.height = document.getElementById("h1").value,
+                    alert("length : " + this.length + " ,breadth : " + this.breadth + " ,height : " + this.height);
+            },
+
+            calculate() {
+                this.length = document.getElementById("l1").value,
+                    this.breadth = document.getElementById("b1").value,
+                    this.height = document.getElementById("h1").value,
+
+                    volume = this.length * this.breadth * this.height;
+                document.getElementById("result1").innerHTML = volume;
+
+            }
+        }
+
+        let calculateVolume2 = {
+            calculate() {
+                this.length = document.getElementById("l2").value,
+                    this.breadth = document.getElementById("b2").value,
+                    this.height = document.getElementById("h2").value,
+                    
+                    this.volume = (calculateVolume(this.length)(this.breadth)(this.height));
+                document.getElementById("result2").innerHTML = this.volume;
+            }
+        }
+
+        function calculateVolume(length) {
+            return function (breadth) {
+                return function (height) {
+                    return length * breadth * height;
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body style="text-align: center;">
+    <h1>Volume of Cuboid</h1>
+
+    <h2>Without Currying</h2>
+    <div class="container">
+        Length : <input type="text" id="l1"><br>
+        Breadth : <input type="text" id="b1"><br>
+        Height : <input type="text" id="h1"><br>
+        <button onclick="calculateVolume1.calculate()">Calculate</button>
+        <button onclick="calculateVolume1.dimensions()">Dimensions</button>
+        Volume : <div id="result1"></div>
+    </div>
+
+    <h2>with currying</h2>
+    <div class="container">
+        Length : <input type="text" id="l2"><br>
+        Breadth : <input type="text" id="b2"><br>
+        Height : <input type="text" id="h2"><br>
+        <button onclick="calculateVolume2.calculate()">Calculate</button>
+        Volume : <div id="result2"></div>
+
+</body>
+
+</html>
